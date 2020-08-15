@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake Name Generator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <style>
+        body{
+            background-image: url(images/bg-image.jpg);
+            padding: 50px 0;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .details-information {
+            margin: 0 auto;
+            margin-top: 100px ;
+            padding: 50px;
+            background-color: #050824;
+            width: 909px;
+            border-radius: 20px;
+            border: 2px solid #0cf4f4;
+            
+        }
+        img#img {
+            border: 3px solid #0cf4f4;
+            margin-top: -122px;
+            border-radius: 100%;
+            margin-bottom: 30px;
+        }
+        h4 span {
+            color: rgb(230, 219, 219);
+            font-weight: 400;
+        }
+
+        h4 {
+            color: #0cf4f4;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        h2{
+            color:#0cf4f4;
+            font-weight: 900;
+        }
+        h3{
+            color: #fdfdfd;
+            font-weight: 700;
+        }
+        .title{
+            border-left: 5px solid;
+            padding-left: 1%;
+            margin-top: 25px;
+        }
+        h1 {
+            font-weight: 900;
+            color: white;
+        }
+    </style>
+
+</head>
+<body>
+    
+    <div class="container">
+        <h1 class="text-center text-white my-4">Welcome To Fake Name Generator App</h1>
+        <div class="container d-flex justify-content-center">
+            <button id="generateBtn" class="btn btn-primary">Fake Name Generator</button>
+        </div>
+
+        <div class="details-information">
+            <div class=" d-flex justify-content-center">
+                <img id="img" src="images/72.jpg" alt="">
+            </div>
+            <h2 id="name" class="text-center">Mr Isaac Williams</h2>
+            <h3 class="title">Personal Details</h3>
+            <h4>Gender: <span id="gender">male</span></h4>
+            <h4>Date Of Birth: <span id="birth-of-date">1987-04-14</span></h4>
+            <h4>Age: <span id="age">20</span></h4>
+            <h4>Married status : <span id="married"> 2 Years Married</span></h4>
+            <h4>Marriage Date : <span id="marriageDate">2018-04-04</span></h4>
+
+            <h3 class="title">Contact</h3>
+            <h4>E-mail: <span id="email">tiara.damota@example.com</span></h4>
+            <h4>Phone: <span id="phone">(61) 2411-4315</span> </h4>
+            <h4>Cell No: <span id="cell">(70) 6266-0684</span> </h4>
+
+
+            <h3 class="title">Location</h3>
+            <h4>Country: <span id="country">Brazil</span></h4>
+            <h4>City: <span id="city">Patos de Minas</span></h4>
+            <h4>State: <span id="state">Brizil</span></h4>
+            <h4>Street: <span id="street">4697-Rua Maranhão</span></h4>
+            <h4>Post Code: <span id="psCode">26536</span></h4>
+        </div>
+    </div>
+
+<script>
+
+    document.getElementById("generateBtn").addEventListener("click", function(){
+      details();
+    })
+
+   const details = function() {
+     fetch('https://randomuser.me/api/')
+        .then(res => res.json())
+        .then(data => {
+            detailsInfo(data)
+        });
+   }
+
+    function detailsInfo(data) {
+        const user = data.results[0];
+        const name = user.name;
+        const userName = `${name.title} ${name.first} ${name.last}`
+        document.getElementById("name").innerText = userName;
+        const img= user.picture.large
+        document.getElementById('img').setAttribute('src' , img);
+        document.getElementById("gender").innerText = user.gender;
+        const birthOfDate = user.dob.date;
+        const newBirthDate = birthOfDate.slice(0, birthOfDate.length - 14);
+        document.getElementById("birth-of-date").innerText = newBirthDate;
+        document.getElementById("age").innerText = user.dob.age;
+        const marriage = user.registered.date;
+        const newMarriage = marriage.slice(0, marriage.length - 14);
+        document.getElementById("marriageDate").innerText = user.registered.age + ' ' + "Years Married";
+        document.getElementById("married").innerText = newMarriage;
+        document.getElementById("email").innerText = user.email;
+        document.getElementById("phone").innerText = user.phone;
+        document.getElementById("cell").innerText = user.cell;
+        document.getElementById("country").innerText = user.location.country;
+        document.getElementById("city").innerText = user.location.city;
+        document.getElementById("state").innerText = user.location.state;
+        const street = user.location.street;
+        const newStreet = `${street.number} ${street.name}`
+        document.getElementById("street").innerText = newStreet;
+        document.getElementById("psCode").innerText = user.location.postcode;
+
+    //     if(marrid=>1){
+    //   getMarrid.innerText= `${marrid} Years Married`
+    //   getMarrigeDate.innerText = exatmarrigeDate;
+    // }
+    // else{
+    //   getMarrid.innerText= "Unmarrid"
+    //   getMarrigeDate.style.display='none'
+    // }
+    }
+
+ 
+</script>
+
+
+</body>
+</html>
