@@ -1,11 +1,11 @@
-# fake-name-generator
+# fake-profile-generator
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-# Fake Name Generator web app
+# Fake Profile Generator web app
 
 
 ## Features
-- Fake name generator web app is made by "randomuser" api.
+- Fake profile generator web app is made by "randomuser" api.
 - That changes full profile by clicked.
 - Using vanella JavaScript
 
