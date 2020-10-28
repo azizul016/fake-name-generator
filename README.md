@@ -1,7 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 # Fake Profile Generator web app
-### [LIVE LINK](https://azizul016.github.io/fake-name-generator/ "Fake Profile Generator")
+### [LIVE SITE](https://azizul016.github.io/fake-name-generator/ "Fake Profile Generator")
 
 ## Features
 - Fake profile generator web app is made by "randomuser" api.
